@@ -1,0 +1,86 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="incomeControl">
+            <h2><span jhiTranslate="visitApp.incomeControl.detail.title">Income Control</span> {{ incomeControl.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+
+                <dt><span jhiTranslate="visitApp.visitor.documentNumber">Document Number</span></dt>
+                <dd>
+                    <span>{{ incomeControl.visitor?.documentNumber }}</span>
+                </dd>
+                <dt><span jhiTranslate="visitApp.visitor.documentType">Document Type</span></dt>
+                <dd>
+                    <div *ngIf="incomeControl.visitor">
+                        <div *ngIf="incomeControl.visitor.documentType">
+                            <a [routerLink]="['/document-type', incomeControl.visitor?.documentType.id, 'view']">{{ incomeControl.visitor?.documentType.name }}</a>
+                        </div>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="visitApp.visitor.fullName">Full Name</span></dt>
+                <dd>
+                    <div *ngIf="incomeControl.visitor">
+                        <a [routerLink]="['/visitor', incomeControl.visitor?.id, 'view']">{{ incomeControl.visitor?.fullName }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="visitApp.visitor.business">Business</span></dt>
+                <dd>
+                    <span>{{ incomeControl.visitor?.business }}</span>
+                </dd>
+                <dt><span jhiTranslate="visitApp.visitor.position">Position</span></dt>
+                <dd>
+                    <span>{{ incomeControl.visitor?.position }}</span>
+                </dd>
+
+
+                <dt><span jhiTranslate="visitApp.incomeControl.reason">Reason</span></dt>
+                <dd>
+                    <span>{{ incomeControl.reason }}</span>
+                </dd>
+                <dt><span jhiTranslate="visitApp.incomeControl.place">Place</span></dt>
+                <dd>
+                    <span>{{ incomeControl.place }}</span>
+                </dd>
+                <dt><span jhiTranslate="visitApp.incomeControl.answerable">Answerable</span></dt>
+                <dd>
+                    <span>{{ incomeControl.answerable }}</span>
+                </dd>
+                <dt><span jhiTranslate="visitApp.incomeControl.admissionDate">Admission Date</span></dt>
+                <dd>
+                    <span>{{ incomeControl.admissionDate }}</span>
+                </dd>
+                <dt><span jhiTranslate="visitApp.incomeControl.departureDate">Departure Date</span></dt>
+                <dd>
+                    <span>{{ incomeControl.departureDate }}</span>
+                </dd>
+
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/income-control', incomeControl.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+
+    <div class="col-4">
+        <div *ngIf="incomeControl">
+            <div *ngIf="incomeControl.visitor">
+                <div *ngIf="imageBase64">
+                    <img [src]="imageBase64"/>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

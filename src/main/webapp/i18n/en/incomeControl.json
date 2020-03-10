@@ -1,0 +1,34 @@
+{
+  "visitApp": {
+    "incomeControl": {
+      "home": {
+        "title": "Income Controls",
+        "createLabel": "Create a new Income Control",
+        "createOrEditLabel": "Create or edit a Income Control",
+        "notFound": "No Income Controls found"
+      },
+      "created": "A new Income Control is created with identifier {{ param }}",
+      "updated": "A Income Control is updated with identifier {{ param }}",
+      "deleted": "A Income Control is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Income Control {{ id }}?"
+      },
+      "detail": {
+        "title": "Income Control"
+      },
+      "reason": "Reason",
+      "place": "Place",
+      "answerable": "Answerable",
+      "admissionDate": "Admission Date",
+      "departureDate": "Departure Date",
+      "visitor": "Visitor",
+      "action": {
+        "exit": "Mark Exit"
+      },
+      "exit": {
+        "title": "Confirm Mark Exit operation",
+        "question": "Are you sure you want to mark exit Income Control {{ id }}?"
+      }
+    }
+  }
+}

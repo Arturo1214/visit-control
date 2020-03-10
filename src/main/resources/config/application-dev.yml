@@ -121,3 +121,5 @@ jhipster:
 # ===================================================================
 
 # application:
+application:
+  path-file: /home/arturo/IdeaProjects/my-project/control-visita/resources/image

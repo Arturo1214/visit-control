@@ -42,6 +42,9 @@ public class CacheConfiguration {
             createCache(cm, bo.com.ahosoft.visit.domain.User.class.getName());
             createCache(cm, bo.com.ahosoft.visit.domain.Authority.class.getName());
             createCache(cm, bo.com.ahosoft.visit.domain.User.class.getName() + ".authorities");
+            createCache(cm, bo.com.ahosoft.visit.domain.DocumentType.class.getName());
+            createCache(cm, bo.com.ahosoft.visit.domain.Visitor.class.getName());
+            createCache(cm, bo.com.ahosoft.visit.domain.IncomeControl.class.getName());
             // jhipster-needle-ehcache-add-entry
         };
     }

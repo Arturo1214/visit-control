@@ -1,0 +1,30 @@
+{
+  "visitApp": {
+    "visitor": {
+      "home": {
+        "title": "Visitantes",
+        "createLabel": "Crear nuevo Visitante",
+        "createOrEditLabel": "Crear o editar Visitante",
+        "notFound": "Ningún Visitantes encontrado"
+      },
+      "created": "Un nuevo Visitante ha sido creado con el identificador {{ param }}",
+      "updated": "Un Visitante ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Visitante ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Visitante {{ id }}?"
+      },
+      "detail": {
+        "title": "Visitante"
+      },
+      "fullName": "Nombre Completo",
+      "documentNumber": "Numero de Documento",
+      "business": "Empresa",
+      "position": "Cargo",
+      "imageName": "Fotoe",
+      "documentType": "Tipo de Documento",
+      "takeASnapshot": "Tomar Foto",
+      "toggleWebcam": "Alternar webcam",
+      "newPhoto": "Nueva Foto"
+    }
+  }
+}

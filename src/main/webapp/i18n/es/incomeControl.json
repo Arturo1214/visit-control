@@ -1,0 +1,34 @@
+{
+  "visitApp": {
+    "incomeControl": {
+      "home": {
+        "title": "Control de Ingresos",
+        "createLabel": "Crear nuevo Control de Ingreso",
+        "createOrEditLabel": "Crear o editar Control de Ingreso",
+        "notFound": "Ningún Control de Ingresos encontrado"
+      },
+      "created": "Un nuevo Control de Ingreso ha sido creado con el identificador {{ param }}",
+      "updated": "Un Control de Ingreso ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Control de Ingreso ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Control de Ingreso {{ id }}?"
+      },
+      "detail": {
+        "title": "Control de Ingreso"
+      },
+      "reason": "Motivo",
+      "place": "Lugar",
+      "answerable": "Responsable",
+      "admissionDate": "Fecha de Ingreso",
+      "departureDate": "Fecha de Salida",
+      "visitor": "Visitante",
+      "action": {
+        "exit": "Marcar Salida"
+      },
+      "exit": {
+        "title": "Confirmar Salida",
+        "question": "¿Seguro que quiere confirmar salida Control de Ingreso {{ id }}?"
+      }
+    }
+  }
+}

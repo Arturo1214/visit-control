@@ -1,0 +1,22 @@
+{
+  "visitApp": {
+    "documentType": {
+      "home": {
+        "title": "Tipo Documentos",
+        "createLabel": "Crear nuevo Tipo Documento",
+        "createOrEditLabel": "Crear o editar Tipo Documento",
+        "notFound": "Ningún Tipo Documentos encontrado"
+      },
+      "created": "Un nuevo Tipo Documento ha sido creado con el identificador {{ param }}",
+      "updated": "Un Tipo Documento ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Tipo Documento ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Tipo Documento {{ id }}?"
+      },
+      "detail": {
+        "title": "Tipo Documento"
+      },
+      "name": "Nombre"
+    }
+  }
+}

@@ -1,0 +1,58 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="visitor">
+            <h2><span jhiTranslate="visitApp.visitor.detail.title">Visitor</span> {{ visitor.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+
+                <dt><span jhiTranslate="visitApp.visitor.documentNumber">Document Number</span></dt>
+                <dd>
+                    <span>{{ visitor.documentNumber }}</span>
+                </dd>
+                <dt><span jhiTranslate="visitApp.visitor.documentType">Document Type</span></dt>
+                <dd>
+                    <div *ngIf="visitor.documentType">
+                        <a [routerLink]="['/document-type', visitor.documentType?.id, 'view']">{{ visitor.documentType?.name }}</a>
+                    </div>
+                </dd>
+
+
+                <dt><span jhiTranslate="visitApp.visitor.fullName">Full Name</span></dt>
+                <dd>
+                    <span>{{ visitor.fullName }}</span>
+                </dd>
+
+                <dt><span jhiTranslate="visitApp.visitor.business">Business</span></dt>
+                <dd>
+                    <span>{{ visitor.business }}</span>
+                </dd>
+                <dt><span jhiTranslate="visitApp.visitor.position">Position</span></dt>
+                <dd>
+                    <span>{{ visitor.position }}</span>
+                </dd>
+
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/visitor', visitor.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+    <div *ngIf="visitor">
+        <div *ngIf="imageBase64">
+            <img [src]="imageBase64"/>
+        </div>
+    </div>
+</div>

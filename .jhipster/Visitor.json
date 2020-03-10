@@ -42,9 +42,9 @@
         }
     ],
     "changelogDate": "20200308144314",
-    "dto": "mapstruct",
+    "dto": "no",
     "searchEngine": false,
-    "service": "serviceImpl",
+    "service": "serviceClass",
     "entityTableName": "visitor",
     "databaseType": "sql",
     "readOnly": false,

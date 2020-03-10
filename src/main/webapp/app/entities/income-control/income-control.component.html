@@ -1,0 +1,108 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="visitApp.incomeControl.home.title">Income Controls</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-income-control" [routerLink]="['/income-control/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span  jhiTranslate="visitApp.incomeControl.home.createLabel">
+            Create a new Income Control
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="incomeControls?.length === 0">
+        <span jhiTranslate="visitApp.incomeControl.home.notFound">No incomeControls found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="incomeControls?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
+                    <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+
+                    <th scope="col"  jhiSortBy="documentNumber"><span jhiTranslate="visitApp.visitor.documentNumber">Document Number</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="documentTypeId"><span jhiTranslate="visitApp.visitor.documentType">Document Type</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="fullName"><span jhiTranslate="visitApp.visitor.fullName">Full Name</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="business"><span jhiTranslate="visitApp.visitor.business">Business</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="position"><span jhiTranslate="visitApp.visitor.position">Position</span> <fa-icon icon="sort"></fa-icon></th>
+
+                    <th scope="col"  jhiSortBy="reason"><span jhiTranslate="visitApp.incomeControl.reason">Reason</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="place"><span jhiTranslate="visitApp.incomeControl.place">Place</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="answerable"><span jhiTranslate="visitApp.incomeControl.answerable">Answerable</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="admissionDate"><span jhiTranslate="visitApp.incomeControl.admissionDate">Admission Date</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="departureDate"><span jhiTranslate="visitApp.incomeControl.departureDate">Departure Date</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let incomeControl of incomeControls ;trackBy: trackId">
+                    <td><a [routerLink]="['/income-control', incomeControl.id, 'view']">{{ incomeControl.id }}</a></td>
+
+                    <td>{{ incomeControl.visitor?.documentNumber }}</td>
+                    <td>
+                        <div *ngIf="incomeControl.visitor?.documentType">
+                            <a [routerLink]="['/document-type', incomeControl.visitor.documentType.id , 'view']" >{{ incomeControl.visitor.documentType.name }}</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf="incomeControl.visitor">
+                            <a [routerLink]="['/visitor', incomeControl.visitor?.id, 'view']" >{{ incomeControl.visitor?.fullName }}</a>
+                        </div>
+                    </td>
+                    <td>{{ incomeControl.visitor?.business }}</td>
+                    <td>{{ incomeControl.visitor?.position }}</td>
+
+                    <td>{{ incomeControl.reason }}</td>
+                    <td>{{ incomeControl.place }}</td>
+                    <td>{{ incomeControl.answerable }}</td>
+                    <td>{{ incomeControl.admissionDate | date:'medium' }}</td>
+                    <td>{{ incomeControl.departureDate | date:'medium' }}</td>
+
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/income-control', incomeControl.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/income-control', incomeControl.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                            </button>
+
+                            <button *ngIf="!incomeControl.departureDate" type="submit" (click)="exit(incomeControl)"
+                                    class="btn btn-default btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="visitApp.incomeControl.action.exit">Mark Exit</span>
+                            </button>
+
+<!--                            <button type="submit" (click)="delete(incomeControl)"-->
+<!--                                    class="btn btn-danger btn-sm">-->
+<!--                                <fa-icon icon="times"></fa-icon>-->
+<!--                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>-->
+<!--                            </button>-->
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div *ngIf="incomeControls?.length > 0">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="ngbPaginationPage" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage($event)"></ngb-pagination>
+        </div>
+    </div>
+</div>

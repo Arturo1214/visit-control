@@ -14,7 +14,7 @@
         }
     ],
     "changelogDate": "20200308012138",
-    "dto": "mapstruct",
+    "dto": "no",
     "searchEngine": false,
     "service": "serviceClass",
     "entityTableName": "document_type",
